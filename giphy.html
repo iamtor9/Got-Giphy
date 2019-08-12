@@ -14,7 +14,7 @@
 
   <button data-face ="mad">Your car got towed before class.</button>
   <button data-face ="sneaky">You left milk underneath the seat in the cop car. </button>
-  <button data-face ="annoyed">A small child eating a popsicle dings your door, while he is looking at you.</button>
+  <button data-face ="speechless">A small child eating a popsicle dings your door, while he is looking at you.</button>
   <button data-face ="tantrum">The officer is writing you a ticket</button>
   <button data-face ="success">Cop car gets stuck behind the train</button>
   <button data-face ="laughing">Your boss left their Bugatti in neutral..</button>
@@ -68,11 +68,30 @@
               document.getElementById("gifs-appear-here").prepend(faceDiv);
         //make images still, animate
         //create a form action, for user input
+
             }
           });
       });
     });
   </script>
+
+<p>Click the button to create a FORM and an INPUT element.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<script>
+function myFunction() {
+  let userInput = document.createElement("FORM");
+  userInput.setAttribute("id", "myForm");
+  document.body.appendChild(userInput);
+
+  var userText = document.createElement("INPUT");
+  userText.setAttribute("type", "text");
+  userText.setAttribute("value", "Donald");
+  document.getElementById("myForm").appendChild(userText);
+}
+ appendChild.userText("value").push;
+</script>
 </body>
 
 </html>

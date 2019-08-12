@@ -1,7 +1,6 @@
 //api_key = UTWQgYBFOWnw4r21kPuXpEEwIP5iG3xZ
 
 
-//const Topics = ["spring","summer", "winter", "fall", "rain", "snow", "sunshine", "storms"]
 
 document.querySelectorAll(".gif").forEach(function (img) {
     img.addEventListener("click", function (event) {
@@ -19,7 +18,10 @@ document.querySelectorAll(".gif").forEach(function (img) {
         event.target.setAttribute("data-state", "still");
       }
 
-
+      let form = document.createElement("INPUT");
+      form.setAttribute("form", "text");
+      
+      
 
 
 
