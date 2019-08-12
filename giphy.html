@@ -8,12 +8,34 @@
 
 </head>
 <body>
-    
-<script type="text/javascript">
+        <body>
+                <h1>open the console to see the result</h1>
+                  <script>    
+                    let apiKey= 'UTWQgYBFOWnw4r21kPuXpEEwIP5iG3xZ'
+                      let giphyAPI = `https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=${apiKey}&limit=5`;
+          
+                      function setup(){
+          
+                          fetch(giphyAPI)
+                          .then(response => {
+                              return response.json();
+                          })
+                          .then(json => {
+                            console.log(json)
+                              console.log(json.data[0].images.original.url);
+                          })
+          
+                          .catch(err => console.log(err));
+                      }
+                      setup();
+                  </script>
+          
+              </body>
+              </html>  
     
     
 
-</script>
+
 </body>
 </html>
 
@@ -32,7 +54,9 @@
 <button id="snow">snow button</button>
 <button id="sunshine">here comes the sun</button>
 <button id="storms">magical cat button</busummer
-   //Try usistormsoop that appends a button for each string in the afall
+   
+   
+    //Try usistormsoop that appends a button for each string in the afall
 3. When the storms clicks on a button, the page should grab 10 statirainon-animated gif images from the GIPHY API and place them on the pasnow
 4. When the storms clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playsstorms
 5. Under every gif, display its rating (PG, G, so on).
@@ -40,7 +64,10 @@
    - This data is provided by the GIPHY API.
    - Only once you get images displaying with button presses should you move on to the next step.
 
-6. Add a form to your page that takes a value from a user input box and adds it to your `topics` array. Then make a function call that takes each topic in the array and remakes the buttons on the page.
+6. Add a form to your page that takes a value from a user input box 
+//and adds it to your `topics` array
+//Then make a function call that takes each topic in the array 
+and remakes the buttons on the page.
 ,<form action=""></form>
 let input = doc
 7. Deploy your assignment to Github Pages.
