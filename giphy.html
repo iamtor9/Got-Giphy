@@ -1,93 +1,75 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
+  <meta charset="utf-8">
+  <title>Face Buttons</title>
 </head>
+
 <body>
-        <body>
-                <h1>open the console to see the result</h1>
-                  <script>    
-                    let apiKey= 'UTWQgYBFOWnw4r21kPuXpEEwIP5iG3xZ'
-                      let giphyAPI = `https://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=${apiKey}&limit=5`;
-          
-                      function setup(){
-          
-                          fetch(giphyAPI)
-                          .then(response => {
-                              return response.json();
-                          })
-                          .then(json => {
-                            console.log(json)
-                              console.log(json.data[0].images.original.url);
-                          })
-          
-                          .catch(err => console.log(err));
-                      }
-                      setup();
-                  </script>
-          
-              </body>
-              </html>  
-    
-    
+    <center><h1>Lawless</h1></center>
+    <center><h2>You know that feeling when...</h2></center>
 
+  <button data-face ="mad">Your car got towed before class.</button>
+  <button data-face ="sneaky">You left milk underneath the seat of your ex's car. </button>
+  <button data-face ="tantrum">A small child eating a popsicle dings your door, while he is looking at you.</button>
+  <button data-face ="begging">The officer is writing you a ticket</button>
+  <button data-face ="success">Cop car gets stuck behind the train</button>
+  <button data-face ="laughing">Your boss left their Bugatti in neutral..</button>
 
+  <div id="gifs-appear-here">
+  </div>
+  <script type="text/javascript">
+    // Adding click event listen listener to all buttons
+    document.querySelectorAll("button").forEach(function (button) {
+      button.addEventListener("click", function () {      
+// Grabbing and storing the data-face  property value from the button
+        const face  = this.getAttribute("data-face");
+
+        // Constructing a queryURL using the face  name
+        const queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+          face  + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
+
+        // Performing an fetch request with the queryURL
+        fetch(queryURL)
+          .then(function (response) {
+            return response.json();
+          })
+          // After data comes back from the request
+          .then(function (responseJson) {
+            console.log(queryURL);
+
+            console.log(responseJson);
+            // storing the data from the fetch request in the results variable
+            const results = responseJson.data;
+
+            // Looping through each result item
+            for (let i = 0; i < results.length; i++) {
+
+              // Creating and storing a div tag
+              const faceDiv = document.createElement("div");
+
+              // Creating a paragraph tag with the result item's rating
+              const p = document.createElement("p")
+              p.innerHTML = "Rating: " + results[i].rating;
+
+              // Creating and storing an image tag
+              const faceImage = document.createElement("img");
+              // Setting the src attribute of the image to a property pulled off the result item
+              faceImage.setAttribute("src", results[i].images.fixed_height.url);
+
+              // Appending the paragraph and image tag to the face Div
+              faceDiv.append(p);
+              faceDiv.append(faceImage);
+
+              // Prependng the face Div to the HTML page in the "#gifs-appear-here" div
+              document.getElementById("gifs-appear-here").prepend(faceDiv);
+            }
+          });
+      });
+    });
+  </script>
 </body>
+
 </html>
-
-
-
-//Before you can make any part of your site work, you need to create an array of strings, each one related to a topic that interests you. Save it to a variable called `topics`.
-
-
-//Your app should take the topics in this array and create buttons in your HTML.
-
-<button id="spring">magical cat button</button>
-<button id="summer">magical cat button</button>
-<button id="winter">magical cat button</button>
-<button id="fall">for the love of fall</button>
-<button id="rain">make it rain button</button>
-<button id="snow">snow button</button>
-<button id="sunshine">here comes the sun</button>
-<button id="storms">magical cat button</busummer
-   
-   
-    //Try usistormsoop that appends a button for each string in the afall
-3. When the storms clicks on a button, the page should grab 10 statirainon-animated gif images from the GIPHY API and place them on the pasnow
-4. When the storms clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playsstorms
-5. Under every gif, display its rating (PG, G, so on).
-
-   - This data is provided by the GIPHY API.
-   - Only once you get images displaying with button presses should you move on to the next step.
-
-6. Add a form to your page that takes a value from a user input box 
-//and adds it to your `topics` array
-//Then make a function call that takes each topic in the array 
-and remakes the buttons on the page.
-,<form action=""></form>
-let input = doc
-7. Deploy your assignment to Github Pages.
-
-8. **Rejoice**! You just made something really cool.
-
----
-
-### Bonus Goals
-
-1. Ensure your app is fully mobile responsive.
-
-2. Allow users to request additional gifs to be added to the page.
-
-   - Each request should ADD 10 gifs to the page, NOT overwrite the existing gifs.
-
-3. List additional metadata (title, tags, etc) for each gif in a clean and readable format.
-
-4. Integrate this search with additional APIs such as OMDB, or Bands in Town. Be creative and build something you are proud to showcase in your portfolio
-
-5. Allow users to add their favorite gifs to a `favorites` section.
-   - This should persist even when they select or add a new topic.
-   - If you are looking for a major challenge, look into making this section persist even when the page is reloaded(via localStorage or cookies).
