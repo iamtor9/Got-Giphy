@@ -6,8 +6,9 @@ body {
 button {
     background-color: black;
     color:yellow;
-    height: 25px;
+    height: 35px;
     font-family: 'Impact', Haettenschweiler, Arial Narrow Bold, sans-serif;
-    font-size: 18px;
+    font-size: 25px;
+    text-align: center;
     
 }
