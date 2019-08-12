@@ -1,6 +1,6 @@
 //api_key = UTWQgYBFOWnw4r21kPuXpEEwIP5iG3xZ
 
-
+let topics = ["mad", "sneaky", "speechless", "tantrum" "success", "laughing"];
 
 document.querySelectorAll(".gif").forEach(function (img) {
     img.addEventListener("click", function (event) {
@@ -18,9 +18,35 @@ document.querySelectorAll(".gif").forEach(function (img) {
         event.target.setAttribute("data-state", "still");
       }
 
-      let form = document.createElement("INPUT");
-      form.setAttribute("form", "text");
+      //form function
+      function myFunction() {
+        let userInput = document.createElement("FORM");
+        userInput.setAttribute("id", "myForm");
+        document.body.appendChild(userInput);
       
+        let userText = document.createElement("INPUT");
+        userText.setAttribute("type", "text");
+        userText.setAttribute("value", "Donald");
+        document.getElementById("myForm").appendChild(userText);
+      }
+
+  
+      // I believe this goes in the html doc. will need to 
+      //adjust it to make sense in this code, tweak it!
+
+//let topics = ["mad", "sneaky", "speechless", "tantrum" "success", "laughing"];
+
+      // Generic function for capturing the movie name from the data-attribute
+      //function alertMovieName() {
+        //document.getElementById("submit").innerHTML = JSON.stringify(responseJson);
+       
+        // YOUR CODE GOES HERE!!!
+
+      }
+
+      //<input onclick="submit()">Try it</input>
+      //function alertMovieName() {
+      //alert(type).append("submit");
       
 
 
