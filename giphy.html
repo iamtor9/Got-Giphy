@@ -1,3 +1,4 @@
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,26 @@
     <center><h1>Lawless</h1></center>
     <center><h2>You know that feeling when...</h2></center>
 
+    <p>Enter your text!</p>
+
+<input><button onclick="myFunction()">Type here!</button></input>
+
+<script>
+    //create my funtion for user input and user text
+
+function myFunction() {
+  let userInput = document.createElement("FORM");
+  userInput.setAttribute("id", "myForm");
+  document.body.appendChild(userInput);
+
+  let userText = document.createElement("INPUT");
+  userText.setAttribute("type", "text");
+  userText.setAttribute("value", "");
+  document.getElementById("Form").appendChild(userText);
+}
+
+</script>
+
   <button data-face ="mad">Your car got towed before class.</button>
   <button data-face ="sneaky">You left milk underneath the seat in the cop car. </button>
   <button data-face ="speechless">A small child eating a popsicle dings your door, while he is looking at you.</button>
@@ -20,68 +41,65 @@
   <button data-face ="prison">After you get pulled over thoughts..</button>
   <div id="gifs-appear-here">
   </div>
+
   <script type="text/javascript">
-    // Adding click event listen listener to all buttons
+
+    // Add click event listener buttons
+
     document.querySelectorAll("button").forEach(function (button) {
       button.addEventListener("click", function () {      
-// Grabbing and storing the data-face  property value from the button
+// Get/store data-face and property value from button
         const face  = this.getAttribute("data-face");
-        // Constructing a queryURL using the face  name
+// const queryURL using the face name
+
         const queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
           face  + "&api_key=BkaUZZWcFij6J7AoQj3WtPb1R2p9O6V9&limit=10";
         
         
-        // Performing an fetch request with the queryURL
+    // fetch req. queryURL
         fetch(queryURL)
           .then(function (response) {
             return response.json();
           })
-          // After data comes back from the request
+          // data returns
           .then(function (responseJson) {
             console.log(queryURL);
             console.log(responseJson);
-            // storing the data from the fetch request in the results variable
+            // store data from fetch request in reslt var.
             const results = responseJson.data;
-            // Looping through each result item
+
+            // Loop via each item
             for (let i = 0; i < results.length; i++) {
-              // Creating and storing a div tag
+
+              // create div tag
               const faceDiv = document.createElement("div");
-              // Creating a paragraph tag with the result item's rating
+
+              // Create paragraph tag with div "r"
               const p = document.createElement("p")
               p.innerHTML = "Rating: " + results[i].rating;
-              // Creating and storing an image tag
+
+              // Create/store img tag
               const faceImage = document.createElement("img");
+
               // Setting the src attribute of the image to a property pulled off the result item
               faceImage.setAttribute("src", results[i].images.fixed_height.url);
-              // Appending the paragraph and image tag to the face Div
+
+              // Append p and img tag to faceDiv
               faceDiv.append(p);
               faceDiv.append(faceImage);
-              // Prependng the face Div to the HTML page in the "#gifs-appear-here" div
+
+              // Prepend faceDiv to this HTML page in  gifs-appear-here div
               document.getElementById("gifs-appear-here").prepend(faceDiv);
+
         //make images still, animate
-        //create a form action, for user input
+        //
+     
             }
           });
       });
     });
   </script>
 
-<p>Click the button to create a FORM and an INPUT element.</p>
-
-<button onclick="myFunction()">Type here!</button>
-
-<script>
-function myFunction() {
-  let userInput = document.createElement("FORM");
-  userInput.setAttribute("id", "myForm");
-  document.body.appendChild(userInput);
-  let userText = document.createElement("INPUT");
-  userText.setAttribute("type", "text");
-  userText.setAttribute("value", "Donald");
-  document.getElementById("myForm").appendChild(userText);
-}
- //appendChild.userText("value").push;
-</script>
 </body>
 
 </html>
